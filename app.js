@@ -1,16 +1,16 @@
 var currentDeg = 0;
-var colors = ["#4C7B8B", "#9ACBD0", "#48A6A7", "#2973B2", "#3B6790", "#FFCC66"];
-var items = ["10K", "20K", "50K", "100K", "200K", "500K"];
+var colors = ["#4C7B8B", "#9ACBD0", "#48A6A7", "#2973B2", "#3B6790", "#3B2790", "#FFCC66"];
+var items = ["10K", "50K", "200K", "20K", "50K", "100K", "10K", "300K", "100K", "20K"];
 var theChoosenIndex;
 var choosenHistory = [];
 let userName = "";
 
 window.onload = function () {
   userName = prompt("Vui lòng nhập tên của bạn:");
-  if (!userName) {
-    alert("Bạn phải nhập tên để tiếp tục!");
-    window.location.reload(); 
-  }
+  // if (!userName) {
+  // alert("Bạn phải nhập tên để tiếp tục!");
+  // window.location.reload();
+  // }  
 };
 
 init();
@@ -46,14 +46,18 @@ function init() {
   }
 }
 function onSpin() {
+  // Vô hiệu hóa nút quay ngay khi nhấn
+  $("#spin-action").prop("disabled", true);
+
   currentDeg = currentDeg + Math.floor(Math.random() * 360 + 360 * 5);
   $("#wheel").css({
     transform: "rotate(" + currentDeg + "deg)",
   });
-  $("#spin-action").prop("disabled", true);
+
   setTimeout(function () {
-    var theChoosen = getTheChoosen(currentDeg);
-    $("#spin-action").prop("disabled", false);
+    const theChoosen = getTheChoosen(currentDeg);
+
+    // Hiển thị kết quả trong modal
     if (items.length > 2) {
       $("#result-modal #remove-the-choosen-btn").show();
     } else {
@@ -63,31 +67,33 @@ function onSpin() {
     $("#result-modal").modal();
     choosenHistory.push(theChoosen);
 
+    // Gửi email với kết quả
     sendMail(theChoosen);
-  }, 7000);
+  }, 8000);
 }
+
 function getTheChoosen(deg) {
   theChoosenIndex =
     (Math.ceil((deg % 360) / (360 / items.length) + 0.5) - 1) % items.length;
   return items[theChoosenIndex];
 }
 
-function sendMail(result) {
-  const subject = `Kết quả từ ${userName}`;
-  const message = `${userName} đã quay được: ${result}`;
+// function sendMail(result) {
+//   const subject = `Kết quả từ ${userName}`;
+//   const message = `${userName} đã quay được: ${result}`;
 
-  const params = {
-    subject: subject,
-    message: message,
-    user_name: userName, 
-  };
-  const serviceID = "service_qsefo9o";
-  const templateID = "template_2rxiljg";
+//   const params = {
+//     subject: subject,
+//     message: message,
+//     user_name: userName,
+//   };
+//   const serviceID = "service_qsefo9o";
+//   const templateID = "template_2rxiljg";
 
-  emailjs
-    .send(serviceID, templateID, params)
-    .then((res) => {
-      console.log(res);
-    })
-    .catch((err) => console.log(err));
-}
+//   emailjs
+//     .send(serviceID, templateID, params)
+//     .then((res) => {
+//       console.log(res);
+//     })
+//     .catch((err) => console.log(err));
+// }

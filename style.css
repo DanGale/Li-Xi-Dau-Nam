@@ -51,7 +51,7 @@ body .wheel-wrapper #wheel-container #wheel {
   position: relative;
   border-radius: 50%;
   overflow: hidden;
-  transition: transform 3s ease;
+  transition: transform 8s cubic-bezier(0.42, 0, 0.58, 1);
 }
 body .wheel-wrapper #wheel-container #wheel .part {
   width: 50%;
@@ -84,3 +84,4 @@ body .wheel-wrapper #wheel-container #wheel .part .name {
     font-size: 8px;
   }
 }
+
