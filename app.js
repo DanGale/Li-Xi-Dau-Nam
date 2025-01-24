@@ -7,10 +7,10 @@ let userName = "";
 
 window.onload = function () {
   userName = prompt("Vui lòng nhập tên của bạn:");
-  // if (!userName) {
-  // alert("Bạn phải nhập tên để tiếp tục!");
-  // window.location.reload();
-  // }  
+  if (!userName) {
+    alert("Bạn phải nhập tên để tiếp tục!");
+    window.location.reload();
+  }
 };
 
 init();
@@ -78,22 +78,22 @@ function getTheChoosen(deg) {
   return items[theChoosenIndex];
 }
 
-// function sendMail(result) {
-//   const subject = `Kết quả từ ${userName}`;
-//   const message = `${userName} đã quay được: ${result}`;
+function sendMail(result) {
+  const subject = `Kết quả từ ${userName}`;
+  const message = `${userName} đã quay được: ${result}`;
 
-//   const params = {
-//     subject: subject,
-//     message: message,
-//     user_name: userName,
-//   };
-//   const serviceID = "service_qsefo9o";
-//   const templateID = "template_2rxiljg";
+  const params = {
+    subject: subject,
+    message: message,
+    user_name: userName,
+  };
+  const serviceID = "service_qsefo9o";
+  const templateID = "template_2rxiljg";
 
-//   emailjs
-//     .send(serviceID, templateID, params)
-//     .then((res) => {
-//       console.log(res);
-//     })
-//     .catch((err) => console.log(err));
-// }
+  emailjs
+    .send(serviceID, templateID, params)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => console.log(err));
+}
