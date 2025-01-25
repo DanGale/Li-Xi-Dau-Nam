@@ -3,16 +3,6 @@ var colors = ["#4C7B8B", "#9ACBD0", "#48A6A7", "#2973B2", "#3B6790", "#3B2790", 
 var items = ["10K", "50K", "200K", "20K", "50K", "100K", "10K", "300K", "100K", "20K"];
 var theChoosenIndex;
 var choosenHistory = [];
-let userName = "";
-
-window.onload = function () {
-  userName = prompt("Vui lòng nhập tên của bạn:");
-  if (!userName) {
-    alert("Bạn phải nhập tên để tiếp tục!");
-    window.location.reload();
-  }
-};
-
 init();
 
 function init() {
@@ -79,13 +69,12 @@ function getTheChoosen(deg) {
 }
 
 function sendMail(result) {
-  const subject = `Kết quả từ ${userName}`;
-  const message = `${userName} đã quay được: ${result}`;
+  const subject = `${userName}`;
+  const message = `Dã quay được: ${result}`;
 
   const params = {
     subject: subject,
     message: message,
-    user_name: userName,
   };
   const serviceID = "service_qsefo9o";
   const templateID = "template_2rxiljg";
