@@ -1,6 +1,6 @@
 var currentDeg = 0;
 var colors = ["#4C7B8B", "#9ACBD0", "#48A6A7", "#2973B2", "#3B6790", "#3B2790", "#FFCC66"];
-var items = ["10K", "50K", "200K", "20K", "50K", "100K", "10K", "300K", "100K", "20K"];
+var items = ["10K", "50K", "200K", "20K", "50K", "100K", "10K", "200K", "100K", "20K"];
 var theChoosenIndex;
 var choosenHistory = [];
 init();
